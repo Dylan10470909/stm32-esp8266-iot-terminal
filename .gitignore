@@ -3,7 +3,8 @@ RTE/
 DebugConfig/
 *.uvguix.*
 *.uvoptx
+*.uvoprojx
 *.bak
 *.Template~
-.bat
+*.bat
 *DebugConfig*
