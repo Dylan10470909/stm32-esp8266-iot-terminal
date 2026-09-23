@@ -1,0 +1,10 @@
+Obj/
+RTE/
+DebugConfig/
+*.uvguix.*
+*.uvoptx
+*.uvoprojx
+*.bak
+*.Template~
+*.bat
+*DebugConfig*
