@@ -171,9 +171,6 @@ void OLED_DrawPoint(u8 x,u8 y,u8 t)
 	temp=1<<(7-bx);
 	if(t)OLED_GRAM[x][pos]|=temp;
 	else OLED_GRAM[x][pos]&=~temp;
-	
-	OLED_GRAM[118][60]|=1<<2;
-				OLED_GRAM[118][61]|=1<<2;
 }
 
 //x1,y1,x2,y2 填充区域的对角坐标
