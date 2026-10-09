@@ -11,7 +11,8 @@
 // #include "esp8266.h"
 #include "time.h"
 #include "led.h"
-#include "dht11_T.h"
+#include "state.h"
+#include "oled.h"
 
 /************************************************************************
 *                          F U N C T I O N S
@@ -41,6 +42,14 @@ int main(void)
 	{
 		printf("DHT11 Init FAILED - check wiring!\r\n");
 	}
+	
+	TIM4_Init(19999, 7199);
+	State_Init();
+	OLED_Init();       
+	
+	OLED_Clear();
+	OLED_ShowString(0, 0, (u8*)"System Ready", 16);
+	OLED_Refresh_Gram();      // 記得refresh，不然畫面不會更新
 
 	while (1)
 	{
@@ -50,11 +59,32 @@ int main(void)
 
 			result = DHT11_Read_Data(&temp, &humi);
 			if (result == 0)
+			{
 				printf("Temp: %d C, Humi: %d %%\r\n", temp, humi);
-			else
-				printf("DHT11 Read FAILED\r\n");
-		}
+		   				
+				OLED_ShowString(0, 0, (u8*)"Temp:", 16);
+				OLED_ShowNum(60, 0, temp, 2, 16);
+				OLED_ShowString(90, 0, (u8*)"C", 16);
 
+				OLED_ShowString(0, 20, (u8*)"Humi:", 16);
+				OLED_ShowNum(60, 20, humi, 2, 16);
+				OLED_ShowString(90, 20, (u8*)"%", 16);
+
+				OLED_Refresh_Gram();   // 全部畫完，一次送出
+				
+				State_NewSensorData(temp, humi);   // 有新資料，交給狀態機
+			}
+			else
+			{
+			    printf("DHT11 Read FAILED\r\n");
+				
+				OLED_Clear();
+				OLED_ShowString(0, 0, (u8*)"Sensor Error!", 16);
+				OLED_Refresh_Gram();
+			}
+		}
+		
+		State_Run();   // 每個loop都跑一次狀態機
 	}
 }
  

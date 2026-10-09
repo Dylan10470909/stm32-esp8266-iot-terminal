@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER,STM32F10X_MD</Define>
               <Undefine></Undefine>
-              <IncludePath>.\User;.\Libraries\STM32F10x_StdPeriph_Driver\inc;.\Libraries\CMSIS;.\APP\led;.\Public;.\APP\beep;.\APP\exti;.\APP\time;.\APP\esp8266;.\APP\sensor</IncludePath>
+              <IncludePath>.\User;.\Libraries\STM32F10x_StdPeriph_Driver\inc;.\Libraries\CMSIS;.\APP\led;.\Public;.\APP\beep;.\APP\exti;.\APP\time;.\APP\esp8266;.\APP\sensor;.\APP\state;.\APP\oled</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -484,6 +484,16 @@
               <FileType>1</FileType>
               <FilePath>.\APP\sensor\dht11.c</FilePath>
             </File>
+            <File>
+              <FileName>state.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\APP\state\state.c</FilePath>
+            </File>
+            <File>
+              <FileName>oled.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\APP\oled\oled.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -503,6 +513,11 @@
               <FileName>usart.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Public\usart.c</FilePath>
+            </File>
+            <File>
+              <FileName>iic.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Public\iic.c</FilePath>
             </File>
           </Files>
         </Group>

@@ -14,14 +14,14 @@
 *                             M A C R O S
 *************************************************************************
 */
-#define     ESP8266_Usart( fmt, ... )           USART3_printf (USART3, fmt, ##__VA_ARGS__ ) 
+#define     ESP8266_Usart( fmt, ... )           USART2_printf (USART2, fmt, ##__VA_ARGS__ ) 
 #define     PC_Usart( fmt, ... )                printf ( fmt, ##__VA_ARGS__ )
 
-#define     ESP8266_CH_HIGH_LEVEL()             GPIO_SetBits( GPIOA, GPIO_Pin_15 )
-#define     ESP8266_CH_LOW_LEVEL()              GPIO_ResetBits( GPIOA, GPIO_Pin_15 )
+#define     ESP8266_CH_HIGH_LEVEL()             GPIO_SetBits( GPIOA, GPIO_Pin_1 )
+#define     ESP8266_CH_LOW_LEVEL()              GPIO_ResetBits( GPIOA, GPIO_Pin_1 )
 
-#define     ESP8266_RST_HIGH_LEVEL()            GPIO_SetBits( GPIOB, GPIO_Pin_2 )
-#define     ESP8266_RST_LOW_LEVEL()             GPIO_ResetBits( GPIOB, GPIO_Pin_2 )
+#define     ESP8266_RST_HIGH_LEVEL()            GPIO_SetBits( GPIOA, GPIO_Pin_15 )
+#define     ESP8266_RST_LOW_LEVEL()             GPIO_ResetBits( GPIOA, GPIO_Pin_15 )
 
 
 /************************************************************************

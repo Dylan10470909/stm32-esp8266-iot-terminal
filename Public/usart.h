@@ -12,7 +12,7 @@
 *************************************************************************
 */
 #define USART1_REC_LEN 200
-#define USART3_REC_LEN 1024  
+#define USART2_REC_LEN 1024  
 
 /************************************************************************
 *                         D A T A   T Y P E S
@@ -48,9 +48,9 @@ typedef enum{
 	WPA_WPA2_PSK = 4,
 } ENUM_AP_PsdMode_TypeDef;
 
-extern struct  STRUCT_USART3_Fram                                  // 串列資料幀的處理結構體
+extern struct  STRUCT_USART2_Fram                                  // 串列資料幀的處理結構體
 {
-	char  Data_RX_BUF[ USART3_REC_LEN ];
+	char  Data_RX_BUF[ USART2_REC_LEN ];
 	
   union {
     __IO u16 InfAll;
@@ -72,7 +72,7 @@ extern u16 USART1_RX_STA;
 *************************************************************************
 */
 void USART1_Init(u32 bound);
-void USART3_Init(u32 bound);
-void USART3_printf( USART_TypeDef* USARTx, char *Data, ... );
+void USART2_Init(u32 bound);
+void USART2_printf( USART_TypeDef* USARTx, char *Data, ... );
 
 #endif
