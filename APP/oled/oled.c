@@ -2,7 +2,6 @@
 #include "iic.h"
 #include "oledfont.h" 
 
-
 //OLED的显存
 //存放格式如下.
 //[0]0 1 2 3 ... 127	
@@ -122,14 +121,14 @@ void OLED_Set_Pos(unsigned char x, unsigned char y)
 	OLED_WR_Byte(((x&0xf0)>>4)|0x10,OLED_CMD);
 	OLED_WR_Byte((x&0x0f)|0x01,OLED_CMD); 
 }   	  
-//开启OLED显示    
+//  開啟OLED顯示  
 void OLED_Display_On(void)
 {
 	OLED_WR_Byte(0X8D,OLED_CMD);  //SET DCDC命令
 	OLED_WR_Byte(0X14,OLED_CMD);  //DCDC ON
 	OLED_WR_Byte(0XAF,OLED_CMD);  //DISPLAY ON
 }
-//关闭OLED显示     
+//  關閉OLED顯示    
 void OLED_Display_Off(void)
 {
 	OLED_WR_Byte(0X8D,OLED_CMD);  //SET DCDC命令
@@ -137,7 +136,7 @@ void OLED_Display_Off(void)
 	OLED_WR_Byte(0XAE,OLED_CMD);  //DISPLAY OFF
 }
 		   			 
-//清屏函数,清完屏,整个屏幕是黑色的!和没点亮一样!!!	  
+//  清屏函數,清完屏,整個螢幕是黑色的!和沒點亮一樣
 void OLED_Clear(void)  
 {  
 	u8 i,n;		    
@@ -171,7 +170,10 @@ void OLED_DrawPoint(u8 x,u8 y,u8 t)
 	bx=y%8;
 	temp=1<<(7-bx);
 	if(t)OLED_GRAM[x][pos]|=temp;
-	else OLED_GRAM[x][pos]&=~temp;		    
+	else OLED_GRAM[x][pos]&=~temp;
+	
+	OLED_GRAM[118][60]|=1<<2;
+				OLED_GRAM[118][61]|=1<<2;
 }
 
 //x1,y1,x2,y2 填充区域的对角坐标
@@ -388,9 +390,9 @@ void OLED_ShowChar(u8 x,u8 y,u8 chr,u8 size,u8 mode)
 {      			    
 	u8 temp,t,t1;
 	u8 y0=y;
-	u8 csize=(size/8+((size%8)?1:0))*(size/2);		//得到字体一个字符对应点阵集所占的字节数
+	u8 csize = (size / 8 + ((size % 8) ? 1 : 0))*(size / 2);		//得到字体一个字符对应点阵集所占的字节数
 	chr=chr-' ';//得到偏移后的值		 
-    for(t=0;t<csize;t++)
+    for(t=0;t < csize; t++)
     {   
 		if(size==12)temp=ascii_1206[chr][t]; 	 	//调用1206字体
 		else if(size==16)temp=ascii_1608[chr][t];	//调用1608字体
@@ -444,16 +446,15 @@ void OLED_ShowNum(u8 x,u8 y,u32 num,u8 len,u8 size)
 //*p:字符串起始地址 
 void OLED_ShowString(u8 x,u8 y,const u8 *p,u8 size)
 {	
-    while((*p<='~')&&(*p>=' '))//判断是不是非法字符!
+    while((*p<='~')&&(*p>=' '))//判断是不是非法字符! 只有在 ASCII(12*12) 裡的可見字元才會顯示
     {       
-        if(x>(X_WIDTH-(size/2))){x=0;y+=size;}
-        if(y>(Y_WIDTH-size)){y=x=0;OLED_Clear();}
-        OLED_ShowChar(x,y,*p,size,1);	 
-        x+=size/2;
+        if(x > (X_WIDTH - (size / 2))){x = 0; y += size;}   // 水平換行：這個字放不放得下
+        if(y > (Y_WIDTH - size)){y = x = 0; OLED_Clear();}  // 垂直溢出：整個螢幕都滿了
+        OLED_ShowChar(x,y,*p,size,1);	// 畫字、移動位置
+        x += size / 2;
         p++;
     }  	
 }
-
 
 //显示汉字
 //x,y:起点坐标  
