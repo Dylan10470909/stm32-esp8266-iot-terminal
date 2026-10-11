@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER,STM32F10X_MD</Define>
               <Undefine></Undefine>
-              <IncludePath>.\User;.\Libraries\STM32F10x_StdPeriph_Driver\inc;.\Libraries\CMSIS;.\APP\led;.\Public;.\APP\beep;.\APP\exti;.\APP\time;.\APP\esp8266;.\APP\sensor;.\APP\state;.\APP\oled</IncludePath>
+              <IncludePath>.\User;.\Libraries\STM32F10x_StdPeriph_Driver\inc;.\Libraries\CMSIS;.\APP\led;.\Public;.\APP\beep;.\APP\exti;.\APP\time;.\APP\esp8266;.\APP\sensor;.\APP\state;.\APP\oled;.\APP\key;.\APP\exti</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -493,6 +493,16 @@
               <FileName>oled.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\APP\oled\oled.c</FilePath>
+            </File>
+            <File>
+              <FileName>key.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\APP\key\key.c</FilePath>
+            </File>
+            <File>
+              <FileName>exti.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\APP\exti\exti.c</FilePath>
             </File>
           </Files>
         </Group>

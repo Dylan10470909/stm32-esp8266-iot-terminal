@@ -79,7 +79,20 @@ typedef enum
   GPIO_Mode_AF_PP = 0x18
 }GPIOMode_TypeDef;
 
-#define IS_GPIO_MODE(MODE) (((MODE) == GPIO_Mode_AIN) || ((MODE) == GPIO_Mode_IN_FLOATING) || \
+/*
+ 輸入模式 (Input Modes)
+	 GPIO_Mode_AIN：模擬輸入（用於 ADC 採集）
+	 GPIO_Mode_IN_FLOATING：浮空輸入（電平由外部決定，懸空時不確定）
+	 GPIO_Mode_IPD：下拉輸入（內部有下拉電阻，預設為低電平）
+	 GPIO_Mode_IPU：上拉輸入（內部有上拉電阻，預設為高電平）
+ 輸出模式 (Output Modes)
+	 GPIO_Mode_Out_PP：推挽輸出（可輸出強高、低電平）
+     GPIO_Mode_Out_OD：開漏輸出（需外接上拉電平才能輸出高電平）
+ 復用模式 (Alternate Function Modes)
+	 GPIO_Mode_AF_PP：復用推挽輸出（用於片上外設如 USART、TIM、SPI 等發送）
+	 GPIO_Mode_AF_OD：復用開漏輸出（用於片上外設如 I2C 等）
+*/
+#define IS_GPIO_MODE(MODE) (((MODE) == GPIO_Mode_AIN) || ((MODE) == GPIO_Mode_IN_FLOATING) || \  
                             ((MODE) == GPIO_Mode_IPD) || ((MODE) == GPIO_Mode_IPU) || \
                             ((MODE) == GPIO_Mode_Out_OD) || ((MODE) == GPIO_Mode_Out_PP) || \
                             ((MODE) == GPIO_Mode_AF_OD) || ((MODE) == GPIO_Mode_AF_PP))

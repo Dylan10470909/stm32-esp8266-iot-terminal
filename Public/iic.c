@@ -19,11 +19,11 @@ void IIC_Init(void)
 	
 	GPIO_InitStructure.GPIO_Pin=IIC_SCL_PIN;
 	GPIO_InitStructure.GPIO_Speed=GPIO_Speed_50MHz;
-	GPIO_InitStructure.GPIO_Mode=GPIO_Mode_Out_PP;
-	GPIO_Init(IIC_SCL_PORT,&GPIO_InitStructure);
+	GPIO_InitStructure.GPIO_Mode=GPIO_Mode_Out_PP;  
+	GPIO_Init(IIC_SCL_PORT,&GPIO_InitStructure);  // PB6
 	
 	GPIO_InitStructure.GPIO_Pin=IIC_SDA_PIN;
-	GPIO_Init(IIC_SDA_PORT,&GPIO_InitStructure);
+	GPIO_Init(IIC_SDA_PORT,&GPIO_InitStructure);  // PB7
 	
 	IIC_SCL=1;
 	IIC_SDA=1;	

@@ -56,13 +56,13 @@ void USART1_Init(u32 bound)
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1,ENABLE);	// 始能 USART1 CLK
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA,ENABLE);	// 始能 GPIO CLK
 	
-	// 2. PA9 -> USART2_TX (推挽復用輸出)
+	// 2. PA9 -> USART1_TX (推挽復用輸出)
 	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_9;  
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;	 		// Alternate Function Push-Pull
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;	  
 	GPIO_Init(GPIOA,&GPIO_InitStructure); 	 				
 	
-	// 3. PA10 -> USART2_RX (浮空輸入)
+	// 3. PA10 -> USART1_RX (浮空輸入)
 	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_10;  
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;	// Floating Input. For USART RX.
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;	  

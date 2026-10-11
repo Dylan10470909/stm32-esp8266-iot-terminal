@@ -1,0 +1,51 @@
+#ifndef _key_H
+#define _key_H
+
+/************************************************************************
+*                E X T E R N A L   R E F E R E N C E S
+*************************************************************************
+*/
+#include "system.h"
+
+/************************************************************************
+*                             M A C R O S
+*************************************************************************
+*/
+//管脚定義
+#define KEY1_PORT 			GPIOA  
+#define KEY1_PIN 			GPIO_Pin_15
+#define KEY1_PORT_RCC		RCC_APB2Periph_GPIOA
+
+#define KEY2_PORT 			GPIOA  
+#define KEY2_PIN 			GPIO_Pin_14
+#define KEY2_PORT_RCC		RCC_APB2Periph_GPIOA
+
+#define KEY3_PORT 			GPIOA  
+#define KEY3_PIN 			GPIO_Pin_13
+#define KEY3_PORT_RCC		RCC_APB2Periph_GPIOA
+
+#define KEY4_PORT 			GPIOA  
+#define KEY4_PIN 			GPIO_Pin_12
+#define KEY4_PORT_RCC		RCC_APB2Periph_GPIOA 	
+
+
+// 使用位操作定義
+#define KEY1 	PAin(15)
+#define KEY2 	PAin(14)
+#define KEY3 	PAin(13)
+#define KEY4 	PAin(12)
+
+// 定義各个按鍵值  
+#define KEY1_PRESS 		1
+#define KEY2_PRESS		2
+#define KEY3_PRESS		3
+#define KEY4_PRESS		4
+
+/************************************************************************
+*              F U N C T I O N   D E C L A R A T I O N S
+*************************************************************************
+*/
+void KEY_Init(void);
+u8 KEY_Scan(u8 mode);
+
+#endif

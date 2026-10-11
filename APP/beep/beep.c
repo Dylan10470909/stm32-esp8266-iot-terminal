@@ -33,7 +33,7 @@ void Beep_Init(void)
 	GPIO_InitStructure.GPIO_Mode=GPIO_Mode_Out_PP;	 
 	GPIO_InitStructure.GPIO_Speed=GPIO_Speed_50MHz;	  
 	GPIO_Init(BEEP_PORT,&GPIO_InitStructure); 	 
-	GPIO_ResetBits(BEEP_PORT,BEEP_PIN);  
+	GPIO_ResetBits(BEEP_PORT,BEEP_PIN);  // PB0
 }
 
 /*_________________________________________________________________________
@@ -44,13 +44,13 @@ void Beep_Init(void)
 **  Parameters: (times, delay time)
 **
 **  Return: void
-**  Note:
+**  Note: times ˆó¾¯´Î”µ , us ÑÓßt•rég
 **_________________________________________________________________________*/
 void Beep_Alarm(u8 times, u8 us)
 {
 	while(times--)
 	{
 	    BEEP = !BEEP;
-		delay_us(us);
+		delay_ms(us);
 	}
 }

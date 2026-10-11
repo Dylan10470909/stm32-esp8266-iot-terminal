@@ -17,11 +17,13 @@
 */
 static ENUM_SystemState g_CurState = STATE_IDLE;
 
-// 目前最新一筆感測器資料，SENDING狀態會用到
+// 目前最新一筆感測器資料，SENDING 狀態會用到
 static u8 g_LastTemp = 0;
 static u8 g_LastHumi = 0;
 static u8 g_HasNewData = 0;   // 有沒有還沒送出去的新資料 0:yes 1:no
 
+u8 temp_threshold = 40;
+u8 humi_threshold = 80;
 /************************************************************************
 *                          F U N C T I O N S
 *************************************************************************
@@ -116,4 +118,9 @@ void State_NewSensorData(u8 temp, u8 humi)
 	g_LastTemp = temp;
 	g_LastHumi = humi;
 	g_HasNewData = 1;
+}
+
+bool waring(u8 temp, u8 humi){
+	printf("Temp Waring %%\r\n");
+	return (temp > temp_threshold  || humi > humi_threshold);
 }

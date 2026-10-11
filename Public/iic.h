@@ -1,14 +1,21 @@
 #ifndef _iic_H
 #define _iic_H
-
+/************************************************************************
+*                E X T E R N A L   R E F E R E N C E S
+*************************************************************************
+*/
 #include "system.h"
 
-/*  IIC_SCL 時脈端口、引脚定義 */
+/************************************************************************
+*                             M A C R O S
+*************************************************************************
+*/  
+// IIC_SCL 時脈端口、引脚定義 
 #define IIC_SCL_PORT 			GPIOB   
 #define IIC_SCL_PIN 			(GPIO_Pin_6)
 #define IIC_SCL_PORT_RCC		RCC_APB2Periph_GPIOB
 
-/*  IIC_SDA 時脈端口、引脚定義 */
+//  IIC_SDA 時脈端口、引脚定義
 #define IIC_SDA_PORT 			GPIOB  
 #define IIC_SDA_PIN 			(GPIO_Pin_7)
 #define IIC_SDA_PORT_RCC		RCC_APB2Periph_GPIOB
@@ -18,6 +25,15 @@
 #define IIC_SDA    PBout(7) // SDA	 
 #define READ_SDA   PBin(7)  // 輸入SDA
 
+/************************************************************************
+*                         D A T A   T Y P E S
+*************************************************************************
+*/
+
+/************************************************************************
+*              F U N C T I O N   D E C L A R A T I O N S
+*************************************************************************
+*/
 // IIC 所有操作函数
 void IIC_Init(void);                // 初始化 IIC 的 IO 口				 
 void IIC_Start(void);				// 發送 IIC 開始訊號

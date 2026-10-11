@@ -187,7 +187,7 @@ void DHT11_IO_OUT()
 {
 	GPIO_InitTypeDef GPIO_InitStructure;
 	GPIO_InitStructure.GPIO_Pin = DHT11;
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;	 //推挽輸出
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;	 // 推挽輸出
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_Init(GPIO_DHT11,&GPIO_InitStructure);	
 }
@@ -205,6 +205,6 @@ void DHT11_IO_IN()
 {
 	GPIO_InitTypeDef GPIO_InitStructure;
 	GPIO_InitStructure.GPIO_Pin = DHT11;
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;	 //上拉輸出模式
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;	 // 上拉輸出模式
 	GPIO_Init(GPIO_DHT11,&GPIO_InitStructure);	
 }
